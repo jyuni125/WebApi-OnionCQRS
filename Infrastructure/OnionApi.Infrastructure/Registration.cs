@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using OnionApi.Domain.Contracts;
+using OnionApi.Domain.Contracts.Repositories;
 using OnionApi.Infrastructure.Databases.Context;
 using OnionApi.Infrastructure.Databases.Repositories;
 using System;
@@ -20,7 +20,6 @@ namespace OnionApi.Infrastructure
 
 
             //for Dependency Injection
-            services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
             services.AddScoped(typeof(IFamilyRepository<>), typeof(FamilyRepository<>));
         }
     }

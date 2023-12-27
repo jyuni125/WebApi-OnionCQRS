@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using OnionApi.Domain.Contracts;
+using OnionApi.Domain.Contracts.Repositories;
 using OnionApi.Domain.Entities;
 
 namespace OnionApi.WebApi.Common
@@ -8,7 +8,7 @@ namespace OnionApi.WebApi.Common
     [Route("api/[controller]")]
     [ApiController]
     public class Base2Controller<T> : ControllerBase
-        where T : class
+     
     {
         protected readonly IFamilyRepository<T> _repo;
 
@@ -31,8 +31,8 @@ namespace OnionApi.WebApi.Common
 
 
 
-        [HttpGet("{lastname}")]
-        [Route("getLastName")]
+        [HttpGet("getLastName/{lastname}")]
+        //[Route("getLastName")]
         public async Task<IActionResult> GetLastName(string lastname)
         {
             return Ok(await _repo.GetLastName(lastname));

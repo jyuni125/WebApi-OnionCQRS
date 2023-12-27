@@ -1,6 +1,7 @@
 
 using Microsoft.EntityFrameworkCore;
 using OnionApi.Domain.Contracts;
+using OnionApi.Domain.Contracts.Repositories;
 using OnionApi.Infrastructure;
 using OnionApi.Infrastructure.Databases.Context;
 using OnionApi.Infrastructure.Databases.Repositories;
@@ -50,7 +51,8 @@ builder.Services.AddDbContext<FamilyDBContext>(option =>
 builder.Services.AddPersistence(builder.Configuration);
 
 
-
+//for Dependency Injection
+//builder.Services.AddScoped(typeof(IFamilyRepository<>), typeof(FamilyRepository<>));
 
 
 

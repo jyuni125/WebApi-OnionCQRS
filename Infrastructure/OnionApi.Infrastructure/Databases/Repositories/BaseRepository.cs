@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using OnionApi.Domain.Contracts;
+using OnionApi.Domain.Contracts.Repositories;
 using OnionApi.Domain.Models;
 using OnionApi.Infrastructure.Databases.Context;
 using System;

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OnionApi.Domain.Contracts
+namespace OnionApi.Domain.Contracts.Repositories
 {
     public interface IBaseRepository<T>
     {

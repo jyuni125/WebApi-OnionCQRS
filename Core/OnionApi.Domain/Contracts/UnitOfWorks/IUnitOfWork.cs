@@ -4,11 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OnionApi.Domain.Common
+namespace OnionApi.Domain.Contracts.UnitOfWorks
 {
-    public interface IBaseEntity
+    public interface IUnitOfWork : IAsyncDisposable
     {
-      
-
     }
 }
