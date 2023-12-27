@@ -1,5 +1,25 @@
 
+using Microsoft.EntityFrameworkCore;
+using OnionApi.Domain.Contracts;
+using OnionApi.Infrastructure;
+using OnionApi.Infrastructure.Databases.Context;
+using OnionApi.Infrastructure.Databases.Repositories;
+
 var builder = WebApplication.CreateBuilder(args);
+
+//for swagger
+builder.Services.AddSwaggerGen(s =>
+{
+    s.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
+    {
+        Version = "v1",
+        Title = "Bert API v1",
+        Description = "THIS IS A SAMPLE API ONLY"
+    });
+});
+
+
+
 
 // Add services to the container.
 
@@ -15,6 +35,24 @@ builder.Configuration
     .AddJsonFile("appsettings.json", optional: false)
     .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true);
 
+/*
+//for dbContext
+var config = builder.Configuration;
+const string FAMILYTDB_CONTEXT_CONNSTRING = "_Family";
+
+
+builder.Services.AddDbContext<FamilyDBContext>(option =>
+{
+    option.UseSqlServer(config.GetConnectionString(FAMILYTDB_CONTEXT_CONNSTRING));
+});
+*/
+
+builder.Services.AddPersistence(builder.Configuration);
+
+
+
+
+
 
 var app = builder.Build();
 
@@ -22,7 +60,10 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(s =>
+    {
+        s.SwaggerEndpoint("/swagger/v1/swagger.json", "Sample Web Api Only");
+    });
 }
 
 app.UseAuthorization();
