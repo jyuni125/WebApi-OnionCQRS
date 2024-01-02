@@ -2,8 +2,10 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using OnionApi.Domain.Contracts.Repositories;
+using OnionApi.Domain.Contracts.UnitOfWorks;
 using OnionApi.Infrastructure.Databases.Context;
 using OnionApi.Infrastructure.Databases.Repositories;
+using OnionApi.Infrastructure.UnitOfWorks;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,9 +20,13 @@ namespace OnionApi.Infrastructure
         {
             services.AddDbContext<FamilyDBContext>(opt=> opt.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
 
+         
+
 
             //for Dependency Injection
             services.AddScoped(typeof(IFamilyRepository<>), typeof(FamilyRepository<>));
+
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
         }
     }
 }

@@ -1,5 +1,7 @@
 
 using Microsoft.EntityFrameworkCore;
+using OnionApi.Application;
+using OnionApi.Core;
 using OnionApi.Domain.Contracts;
 using OnionApi.Domain.Contracts.Repositories;
 using OnionApi.Infrastructure;
@@ -7,6 +9,10 @@ using OnionApi.Infrastructure.Databases.Context;
 using OnionApi.Infrastructure.Databases.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
+
+//builder.Services.AddApplication();
+builder.Services.AddApplicationServices();
+builder.Services.AddPersistence(builder.Configuration);
 
 //for swagger
 builder.Services.AddSwaggerGen(s =>
@@ -48,8 +54,8 @@ builder.Services.AddDbContext<FamilyDBContext>(option =>
 });
 */
 
-builder.Services.AddPersistence(builder.Configuration);
 
+//builder.Services.AddMediatR(c => c.RegisterServicesFromAssembly(typeof(OnionApi.Core.Registration).Assembly));
 
 //for Dependency Injection
 //builder.Services.AddScoped(typeof(IFamilyRepository<>), typeof(FamilyRepository<>));

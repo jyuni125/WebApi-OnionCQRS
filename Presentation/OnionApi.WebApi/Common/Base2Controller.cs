@@ -1,26 +1,35 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using MediatR;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using OnionApi.Core.Queries.Family;
 using OnionApi.Domain.Contracts.Repositories;
 using OnionApi.Domain.Entities;
+using OnionApi.Application.Queries.Family;
 
 namespace OnionApi.WebApi.Common
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/")]
     [ApiController]
     public class Base2Controller<T> : ControllerBase
      
     {
         protected readonly IFamilyRepository<T> _repo;
-
-        public Base2Controller(IFamilyRepository<T> repo)
+        private readonly IMediator _mediatr;
+        public Base2Controller(IFamilyRepository<T> repo,IMediator mediatr)
         {
             _repo = repo;
+            _mediatr = mediatr;
         }
 
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            return Ok(await _repo.GetAll());
+             //return Ok(await _repo.GetAll());
+
+            var myresponse =await _mediatr.Send(new GetAllFamilyQuery2());
+
+            return Ok(myresponse);
+
         }
 
         [HttpGet("{id}")]

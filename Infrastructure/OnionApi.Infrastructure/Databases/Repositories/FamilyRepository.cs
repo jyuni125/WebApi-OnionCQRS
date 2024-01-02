@@ -15,6 +15,10 @@ namespace OnionApi.Infrastructure.Databases.Repositories
     public class FamilyRepository<T> : BaseRepository<T>, IFamilyRepository<T>
         where T:class,IBaseModel
     {
+        public FamilyRepository(FamilyDBContext db) : base(db)
+        {
+        }
+
         public FamilyRepository(FamilyDBContext db,ILogger<T> logger) : base(db,logger)
         {
         }
