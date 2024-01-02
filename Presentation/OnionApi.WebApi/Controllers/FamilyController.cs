@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using MediatR;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using OnionApi.Domain.Contracts.Repositories;
 using OnionApi.Domain.Entities;
@@ -9,10 +10,13 @@ namespace OnionApi.WebApi.Controllers
 
     public class FamilyController : Base2Controller<Family>
     {
-       // private readonly IFamilyRepository<Family> _repo;
-        public FamilyController(IFamilyRepository<Family> repo) : base(repo)
+        // private readonly IFamilyRepository<Family> _repo;
+     
+
+        public FamilyController(IFamilyRepository<Family> repo,IMediator mediatr) : base(repo,mediatr)
         {
          //   _repo = repo;
+      
         }
     }
     

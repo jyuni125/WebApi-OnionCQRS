@@ -18,6 +18,13 @@ namespace OnionApi.Infrastructure.Databases.Repositories
         protected readonly DbSet<T> _table;
         public readonly ILogger<T> _logger;
 
+
+        public BaseRepository(FamilyDBContext db)
+        {
+            _db = db;
+            _table = db.Set<T>();
+        }
+
         public BaseRepository(FamilyDBContext db, ILogger<T> logger)
         {
             _db = db;
@@ -31,6 +38,7 @@ namespace OnionApi.Infrastructure.Databases.Repositories
 
             try
             {
+                _logger.LogInformation("GET ALL REPOSITORY WORKED!");
                 return await _table.ToListAsync();
 
 
@@ -48,6 +56,7 @@ namespace OnionApi.Infrastructure.Databases.Repositories
 
             try
             {
+                _logger.LogInformation("GET BY ID REPOSITORY WORKED!");
                 return await _table.FindAsync(id);
 
 

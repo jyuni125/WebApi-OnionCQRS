@@ -9,15 +9,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentatio
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{E76BF81E-132D-46BC-B494-885914F0A2BD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnionApi.Application", "Core\OnionApi.Application\OnionApi.Application.csproj", "{7A213902-6711-4270-897D-EBF22772E95C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnionApi.Application", "Core\OnionApi.Application\OnionApi.Application.csproj", "{7A213902-6711-4270-897D-EBF22772E95C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnionApi.Domain", "Core\OnionApi.Domain\OnionApi.Domain.csproj", "{B65C1810-8A46-422C-8097-9DB06D16A493}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnionApi.Domain", "Core\OnionApi.Domain\OnionApi.Domain.csproj", "{B65C1810-8A46-422C-8097-9DB06D16A493}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnionApi.Infrastructure", "Infrastructure\OnionApi.Infrastructure\OnionApi.Infrastructure.csproj", "{E894E299-5E06-46E6-9A81-4D063BF8FC47}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnionApi.Infrastructure", "Infrastructure\OnionApi.Infrastructure\OnionApi.Infrastructure.csproj", "{E894E299-5E06-46E6-9A81-4D063BF8FC47}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnionApi.Presistence", "Infrastructure\OnionApi.Presistence\OnionApi.Presistence.csproj", "{51B5006D-09E2-4AF0-829C-8BA477B6FB1C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnionApi.Presistence", "Infrastructure\OnionApi.Presistence\OnionApi.Presistence.csproj", "{51B5006D-09E2-4AF0-829C-8BA477B6FB1C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnionApi.WebApi", "Presentation\OnionApi.WebApi\OnionApi.WebApi.csproj", "{14D7B7B4-6E9E-482E-AE22-3209D460E796}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnionApi.WebApi", "Presentation\OnionApi.WebApi\OnionApi.WebApi.csproj", "{14D7B7B4-6E9E-482E-AE22-3209D460E796}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnionApi.Core", "Core\OnionApi.Core\OnionApi.Core.csproj", "{BDB99FCD-2E3C-4F0A-A1B3-DA13EB328D14}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{14D7B7B4-6E9E-482E-AE22-3209D460E796}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{14D7B7B4-6E9E-482E-AE22-3209D460E796}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{14D7B7B4-6E9E-482E-AE22-3209D460E796}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BDB99FCD-2E3C-4F0A-A1B3-DA13EB328D14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDB99FCD-2E3C-4F0A-A1B3-DA13EB328D14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDB99FCD-2E3C-4F0A-A1B3-DA13EB328D14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDB99FCD-2E3C-4F0A-A1B3-DA13EB328D14}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -55,6 +61,7 @@ Global
 		{E894E299-5E06-46E6-9A81-4D063BF8FC47} = {E76BF81E-132D-46BC-B494-885914F0A2BD}
 		{51B5006D-09E2-4AF0-829C-8BA477B6FB1C} = {E76BF81E-132D-46BC-B494-885914F0A2BD}
 		{14D7B7B4-6E9E-482E-AE22-3209D460E796} = {8ACBDDB4-7474-46AF-9B33-743C2283B12D}
+		{BDB99FCD-2E3C-4F0A-A1B3-DA13EB328D14} = {14FC4478-97D0-4796-9FF7-105D372F3ABB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {60D3326D-D6F2-4516-AAC6-495199E0E95E}
