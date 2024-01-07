@@ -1,6 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using AutoMapper;
+using AutoMapper.QueryableExtensions;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using OnionApi.Domain.Contracts.Repositories;
+using OnionApi.Domain.Entities;
 using OnionApi.Domain.Models;
 using OnionApi.Infrastructure.Databases.Context;
 using System;
@@ -15,21 +18,24 @@ namespace OnionApi.Infrastructure.Databases.Repositories
         where T : class,IBaseModel
     {
         protected readonly FamilyDBContext _db;
-        protected readonly DbSet<T> _table;
-        public readonly ILogger<T> _logger;
+        //protected readonly DbSet<T> _table;
+        public readonly ILogger<Family> _logger;
+        private readonly IMapper _mapper;
 
 
         public BaseRepository(FamilyDBContext db)
         {
             _db = db;
-            _table = db.Set<T>();
+           // _table = db.Set<T>();
+           
         }
 
-        public BaseRepository(FamilyDBContext db, ILogger<T> logger)
+        public BaseRepository(FamilyDBContext db, ILogger<Family> logger, IMapper mapper)
         {
             _db = db;
-            _table = db.Set<T>();
+            //_table = db.Set<T>();
             _logger = logger;
+            _mapper = mapper;
         }
 
         public async Task<IEnumerable<T>> GetAll()
@@ -39,8 +45,12 @@ namespace OnionApi.Infrastructure.Databases.Repositories
             try
             {
                 _logger.LogInformation("GET ALL REPOSITORY WORKED!");
-                return await _table.ToListAsync();
+                //return await _table.ToListAsync();
 
+
+                return await _db.Families
+                            .ProjectTo<T>(_mapper.ConfigurationProvider)
+                            .ToListAsync();
 
             }
             catch (Exception e)
@@ -57,8 +67,12 @@ namespace OnionApi.Infrastructure.Databases.Repositories
             try
             {
                 _logger.LogInformation("GET BY ID REPOSITORY WORKED!");
-                return await _table.FindAsync(id);
+                // return await _table.FindAsync(id);
 
+                return await _db.Families
+                            .Where(data => data.Id == id)
+                            .ProjectTo<T>(_mapper.ConfigurationProvider)
+                            .FirstOrDefaultAsync();
 
             }
             catch (Exception e)
