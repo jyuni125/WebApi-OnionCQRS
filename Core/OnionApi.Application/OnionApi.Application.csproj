@@ -7,9 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Commons\Behaviours\" />
     <Folder Include="Commons\Exceptions\" />
-    <Folder Include="DTOs\" />
   </ItemGroup>
 
   <ItemGroup>

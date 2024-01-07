@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 namespace OnionApi.Application.Commons
 {
     public class QueryOrCommandResult<T>
+   
     {
 
         public bool Success { get; set; }

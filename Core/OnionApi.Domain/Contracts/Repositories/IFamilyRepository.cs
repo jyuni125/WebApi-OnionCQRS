@@ -8,12 +8,12 @@ namespace OnionApi.Domain.Contracts.Repositories
 {
     public interface IFamilyRepository<T> : IBaseRepository<T>
     {
-        public Task Create(T t);
+        public Task<Guid> Create(T t);
 
-        public Task Update(T t);
+        public Task<int> Update(Guid id,object model);
 
-        public Task Delete(Guid id);
+        public Task<int> Delete(Guid id);
 
-        public Task<IEnumerable<T>> GetLastName(string Lastname);
+        public Task<IEnumerable<T>> getByLastName(string Lastname);
     }
 }

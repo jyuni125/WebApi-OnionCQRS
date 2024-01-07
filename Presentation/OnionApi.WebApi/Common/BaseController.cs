@@ -2,11 +2,15 @@
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using OnionApi.Application.Commands.Family;
 using OnionApi.Application.Commons;
+using OnionApi.Application.DTOs.Family;
+using OnionApi.Application.Queries.Family;
+using OnionApi.Application.ViewModel;
 
 namespace OnionApi.WebApi.Common
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class BaseController : ControllerBase
     {
@@ -20,25 +24,32 @@ namespace OnionApi.WebApi.Common
         }
 
 
-        protected async Task<IActionResult> Handle<T1, T2, T3>(dynamic dto)
+        protected async Task<IActionResult> Handle<T1, T2, T3>(T1 dto)
         {
 
             var queryOrCommmand = _mapper.Map<T2>(dto);
 
-            return await Handle<T3>(queryOrCommmand);
+            return await Handle<T3,T2>(queryOrCommmand);
+            
         }
 
-        protected async Task<IActionResult> Handle<T>(dynamic queryOrCommmand)
+       
+
+
+        protected async Task<IActionResult> Handle<T1,T2>(T2 queryOrCommmand)
+         
         {
+            
             if (queryOrCommmand == null)
                 return BadRequest();
 
-            var result = new QueryOrCommandResult<T>();
+            var result = new QueryOrCommandResult<T1>();
             if (ModelState.IsValid)
             {
                 try
                 {
-                    result.Data = await _mediator.Send(queryOrCommmand);
+                    var returndata = await _mediator.Send(queryOrCommmand);
+                    result.Data = (T1?)returndata;
                     result.Success = true;
                 }
                 catch (Exception ex)
@@ -57,6 +68,12 @@ namespace OnionApi.WebApi.Common
                 return Ok(result);
             else
                 return BadRequest(result);
+
         }
+
+
+
+
+
     }
 }

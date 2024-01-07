@@ -44,7 +44,7 @@ namespace OnionApi.WebApi.Common
         //[Route("getLastName")]
         public async Task<IActionResult> GetLastName(string lastname)
         {
-            return Ok(await _repo.GetLastName(lastname));
+            return Ok();//await _repo.GetLastName(lastname));
         }
 
         [HttpPost]
@@ -58,7 +58,7 @@ namespace OnionApi.WebApi.Common
         [HttpPut]
         public async Task<IActionResult> Update([FromBody] T t)
         {
-            await _repo.Update(t);
+           // await _repo.Update(t);
 
             return Ok();
         }
